@@ -38,9 +38,19 @@ export class AppComponent {
     searchTerm = searchTerm.toLowerCase();
     for (let satellite of this.sourceList) {
       let name = satellite.name.toLowerCase();
+      let type = satellite.type.toLowerCase();
+      let orbitType = satellite.orbitType.toLowerCase();
+
       if (name.indexOf(searchTerm) >= 0) {
         matchingSatellites.push(satellite);
       }
+      if (type.indexOf(searchTerm) >= 0 && !matchingSatellites.includes(satellite)) {
+        matchingSatellites.push(satellite);
+      }
+      if (orbitType.indexOf(searchTerm) >= 0 && !matchingSatellites.includes(satellite)) {
+        matchingSatellites.push(satellite);
+      }
+
     }
     this.displayList = matchingSatellites;
     this.sortBool[0] = true;
